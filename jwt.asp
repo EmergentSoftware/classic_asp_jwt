@@ -21,7 +21,7 @@ End Function
 
 ' SHA256 HMAC
 Function SHA256SignAndEncode(sIn, sKey)
-  Dim sSignature
+  Dim sSignature, sha256
 
   'Open WSC object to access the encryption function
   Set sha256 = GetObject("script:"&Server.MapPath("./external/sha256.wsc"))

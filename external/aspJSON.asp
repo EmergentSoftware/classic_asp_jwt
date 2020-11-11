@@ -143,6 +143,7 @@ Class aspJSON
 	End Function
 
 	Private Function GetDict(objDict)
+		Dim item, keyvals
 		For Each item In objDict
 			Select Case TypeName(objDict.Item(item))
 				Case "Dictionary"

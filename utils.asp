@@ -7,6 +7,7 @@
 ' http://tools.ietf.org/html/rfc4648
 ' http://tools.ietf.org/html/draft-ietf-jose-json-web-signature-10
 Function SafeBase64Encode(sIn)
+  Dim sOut
   sOut = Base64Encode(sIn)
   sOut = Base64ToSafeBase64(sOut)
 
@@ -15,6 +16,7 @@ End Function
 
 ' Strips unsafe characters from a Base64 encoded string
 Function Base64ToSafeBase64(sIn)
+  Dim sOut
   sOut = Replace(sIn,"+","-")
   sOut = Replace(sOut,"/","_")
   sOut = Replace(sOut,"\r","")
@@ -26,6 +28,7 @@ End Function
 
 ' Converts an ASP dictionary to a JSON string
 Function DictionaryToJSONString(dDictionary)
+  Dim oJSONpayload
   Set oJSONpayload = New aspJSON
 
   
@@ -72,10 +75,6 @@ End Function
 
 ' Returns a random string to prevent replays
 Function UniqueString()
-  Set TypeLib = CreateObject("Scriptlet.TypeLib")
-    UniqueString = Left(CStr(TypeLib.Guid), 38)
-    Set TypeLib = Nothing
+    UniqueString = Left(CStr(CreateObject("Scriptlet.TypeLib").Guid), 38)
 End Function
-
-
 %>
